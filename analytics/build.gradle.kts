@@ -8,6 +8,9 @@ plugins {
 
 android {
     compileSdkVersion(BuildVersions.targetSdk)
+    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>() {
+        kotlinOptions.jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
     defaultConfig {
         minSdkVersion(BuildVersions.minSdk)
         targetSdkVersion(BuildVersions.targetSdk)
@@ -32,7 +35,12 @@ dependencies {
     kapt(RoomLibraries.compiler)
     implementation(RoomLibraries.ktx)
     implementation(RoomLibraries.rxjava2)
+    implementation(WorkManagerLibraries.runtimeKtx)
+    implementation(WorkManagerLibraries.rxjava)
+
     testImplementation(RoomLibraries.testing)
     testImplementation(TestLibraries.junit)
     testImplementation(TestLibraries.mockk)
+
+    androidTestImplementation(WorkManagerLibraries.testing)
 }

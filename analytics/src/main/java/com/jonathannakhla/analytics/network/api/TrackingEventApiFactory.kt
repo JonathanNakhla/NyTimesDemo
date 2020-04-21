@@ -11,7 +11,7 @@ class TrackingEventApiFactory(private val context: Context) {
     }
 
     fun create(): TrackingEventApi {
-        val networkProvider = NetworkProvider(SEGMENT_BASE_URL, context)
+        val networkProvider = NetworkProvider(SEGMENT_BASE_URL, context.applicationContext)
         val service = networkProvider.create(TrackingEventService::class.java)
         return TrackingEventApiImpl(service)
     }

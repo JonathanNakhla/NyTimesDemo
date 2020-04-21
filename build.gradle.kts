@@ -5,6 +5,7 @@ buildscript {
         google()
         jcenter()
         maven { url = java.net.URI("https://oss.jfrog.org/libs-snapshot") }
+        maven { url = java.net.URI("http://www.idescout.com/maven/repo/") }
     }
     dependencies {
         classpath (BuildPlugins.androidGradlePlugin)
@@ -21,6 +22,7 @@ allprojects {
         google()
         jcenter()
         maven { url = java.net.URI("https://oss.jfrog.org/libs-snapshot") }
+        maven { url = java.net.URI("http://www.idescout.com/maven/repo/") }
     }
 }
 

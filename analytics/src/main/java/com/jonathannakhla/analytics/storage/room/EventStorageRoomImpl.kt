@@ -17,11 +17,11 @@ class EventStorageRoomImpl(context: Context) :
 
     companion object {
         private const val DATABASE_NAME = "analytics"
-        private const val BATCH_COUNT = 5
+        private const val BATCH_COUNT = 15
     }
 
     private val db = Room.databaseBuilder(
-        context,
+        context.applicationContext,
         TrackingEventDatabase::class.java,
         DATABASE_NAME
     ).build()

@@ -20,6 +20,8 @@ object Versions {
     const val kotlin = "1.3.60"
     const val serializationRuntime = "0.14.0"
     const val room = "2.2.5"
+    const val workManager = "2.3.4"
+    const val sqlScout = "4.1"
     const val rxjava = "3.0.2"
     const val rxandroid = "3.0.0-SNAPSHOT"
     const val rxjava3Bridge = "3.0.0"
@@ -91,4 +93,15 @@ object RoomLibraries {
     const val ktx = "androidx.room:room-ktx:${Versions.room}" // optional - Kotlin Extensions and Coroutines support for Room
     const val rxjava2 = "androidx.room:room-rxjava2:${Versions.room}" // optional - RxJava support for Room
     const val testing = "androidx.room:room-testing:${Versions.room}" // Test helpers
+}
+
+object WorkManagerLibraries {
+    const val runtimeKtx = "androidx.work:work-runtime-ktx:${Versions.workManager}" // Kotlin + coroutines
+    const val rxjava = "androidx.work:work-rxjava2:${Versions.workManager}" // optional - RxJava2 support
+    const val testing = "androidx.work:work-testing:${Versions.workManager}" // optional - Test helpers
+}
+
+object SqlScoutLibraries {
+    const val server = "com.idescout.sql:sqlscout-server:${Versions.sqlScout}"
+    const val serverNoop = "com.idescout.sql:sqlscout-server-noop:${Versions.sqlScout}"
 }

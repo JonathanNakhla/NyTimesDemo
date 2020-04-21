@@ -13,7 +13,7 @@ class NetworkProvider(private val baseUrl: String,
                       private val context: Context) {
     fun <T> create(service: Class<T>): T {
 
-        val okHttpClient = OkHttpClient.Builder().addInterceptor(ChuckInterceptor(context)).build()
+        val okHttpClient = OkHttpClient.Builder().addInterceptor(ChuckInterceptor(context.applicationContext)).build()
 
         val contentType = MediaType.get("application/json")
         val retrofit = Retrofit.Builder()

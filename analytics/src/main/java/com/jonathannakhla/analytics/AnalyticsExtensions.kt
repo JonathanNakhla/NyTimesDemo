@@ -11,13 +11,20 @@ import kotlinx.serialization.json.JsonConfiguration
 import kotlinx.serialization.parseMap
 import kotlinx.serialization.stringify
 
+
+@UseExperimental(ImplicitReflectionSerializer::class)
+fun TrackingEventBatch.serialize() =
+    Json(JsonConfiguration.Stable).stringify(TrackingEventBatch.serializer(), this)
+
+fun String.deserializeBatch() =
+    Json(JsonConfiguration.Stable).parse(TrackingEventBatch.serializer(),this)
+
 @UseExperimental(ImplicitReflectionSerializer::class)
 fun TrackingEvent.toTrackingEventEntity() =
     TrackingEventEntity(
         eventName = this.eventName,
         properties = Json(JsonConfiguration.Stable).stringify(this.properties)
     )
-
 
 @UseExperimental(ImplicitReflectionSerializer::class)
 fun TrackingEventEntity.toTrackingEvent() =

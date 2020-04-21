@@ -46,7 +46,7 @@ class MainViewModel(private val topStoriesRepo: TopStoriesRepo,
                                  sharedImage: View,
                                  sharedText: View) {
 
-        trackArticleView(article)
+        trackArticleClicked(article)
 
         val hashCode = article.hashCode()
         val detailsFragment = DetailsFragment.newInstance(hashCode)

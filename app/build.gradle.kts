@@ -47,6 +47,10 @@ dependencies {
     implementation(DiLibraries.koin)
     implementation(DiLibraries.koinViewModel)
     implementation(ToolsLibraries.glide)
+
+    debugImplementation(SqlScoutLibraries.server)
+    releaseImplementation(SqlScoutLibraries.serverNoop)
+
     testImplementation(TestLibraries.junit)
     testImplementation(TestLibraries.mockk)
 }

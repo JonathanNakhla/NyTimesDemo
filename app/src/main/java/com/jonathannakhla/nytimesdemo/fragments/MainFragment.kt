@@ -10,6 +10,7 @@ import com.jonathannakhla.nytimesdemo.R
 import com.jonathannakhla.nytimesdemo.adapters.TopStoriesAdapter
 import com.jonathannakhla.nytimesdemo.data.Article
 import com.jonathannakhla.nytimesdemo.utils.ArticleClickListener
+import com.jonathannakhla.nytimesdemo.utils.ViewArticleRowCallback
 import com.jonathannakhla.nytimesdemo.utils.into
 import com.jonathannakhla.nytimesdemo.viewmodels.MainViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -61,10 +62,10 @@ class MainFragment: Fragment() {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe {
-                recyclerview.adapter = TopStoriesAdapter(emptyList(), getArticleClickListener())
+                recyclerview.adapter = TopStoriesAdapter(emptyList(), getArticleClickListener(), getViewArticleRowCallback())
                 if (showProgressBar) progress_bar.visibility = View.VISIBLE
             }
-            .map { recyclerview.adapter = TopStoriesAdapter(it, getArticleClickListener()) }
+            .map { recyclerview.adapter = TopStoriesAdapter(it, getArticleClickListener(), getViewArticleRowCallback()) }
             .subscribe(
                 {
                     Log.d(TAG, "Initial loading of list complete!")
@@ -91,6 +92,14 @@ class MainFragment: Fragment() {
         }
     }
 
+    private fun getViewArticleRowCallback(): ViewArticleRowCallback {
+        return object : ViewArticleRowCallback {
+            override fun onViewArticleRow(article: Article) {
+                mainViewModel.trackArticleView(article)
+            }
+        }
+    }
+
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.options_menu, menu)
         val searchView = menu.findItem(R.id.search_menu_item).actionView as SearchView
@@ -98,7 +107,7 @@ class MainFragment: Fragment() {
         mainViewModel.getSearchObservable(searchView)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .map { recyclerview.adapter = TopStoriesAdapter(it, getArticleClickListener()) }
+            .map { recyclerview.adapter = TopStoriesAdapter(it, getArticleClickListener(), getViewArticleRowCallback()) }
             .subscribe(
                 {
                     Log.d(TAG, "Searching complete!")
