@@ -1,6 +1,7 @@
 package com.jonathannakhla.nytimesdemo.viewmodels
 
 import androidx.appcompat.widget.SearchView
+import com.jonathannakhla.analytics.track.Trackers
 import com.jonathannakhla.nytimesdemo.data.Article
 import com.jonathannakhla.nytimesdemo.repositories.TopStoriesRepo
 import com.jonathannakhla.nytimesdemo.ui.RxSearchView
@@ -18,6 +19,7 @@ internal class MainViewModelTest {
 
     @RelaxedMockK private lateinit var topStoriesRepo: TopStoriesRepo
     @RelaxedMockK private lateinit var searchViewRx: RxSearchView
+    @RelaxedMockK private lateinit var trackers: Trackers
 
     private lateinit var mainViewModel: MainViewModel
 
@@ -25,7 +27,8 @@ internal class MainViewModelTest {
     fun setUp() {
         mainViewModel = MainViewModel(
             topStoriesRepo,
-            searchViewRx
+            searchViewRx,
+            trackers
         )
     }
 
@@ -35,14 +38,13 @@ internal class MainViewModelTest {
         val query = "Tra"
         val queryObservable = Observable.just(query)
 
-        val articleOne = Article("someTitleOne", "someAbstractOne", "someUrlOne", null)
-        val articleTwo = Article("someTitleTwo", "someAbstractTwo", "someUrlTwo", null)
+        val articleOne = Article("someTitleOne", "someAbstractOne", "someUrlOne", "someDateOne", null)
+        val articleTwo = Article("someTitleTwo", "someAbstractTwo", "someUrlTwo", "someDateOne", null)
 
         val topStories = listOf(articleOne, articleTwo)
 
         every { searchViewRx.getObservable(searchView) } returns queryObservable
-        every { topStoriesRepo.searchTopStories(query) }.returns(Observable.fromCallable { topStories })
-
+        every { topStoriesRepo.searchTopStories(query) } returns Observable.fromCallable { topStories }
 
         mainViewModel.getSearchObservable(searchView)
             .test()
