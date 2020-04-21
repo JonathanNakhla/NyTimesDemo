@@ -48,6 +48,8 @@ dependencies {
     implementation(DiLibraries.koinViewModel)
     implementation(ToolsLibraries.glide)
 
+    debugImplementation(ToolsLibraries.leakCanary)
+
     debugImplementation(SqlScoutLibraries.server)
     releaseImplementation(SqlScoutLibraries.serverNoop)
 

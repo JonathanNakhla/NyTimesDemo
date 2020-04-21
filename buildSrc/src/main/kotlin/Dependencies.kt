@@ -38,6 +38,7 @@ object Versions {
     const val koin = "2.0.1"
     const val glide = "4.11.0"
     const val chuck = "1.1.0"
+    const val leakCanary = "2.2"
     const val junit = "5.4.0"
     const val mockk = "1.9.3.kotlin12"
 }
@@ -80,6 +81,7 @@ object ToolsLibraries {
     const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
     const val chuck = "com.readystatesoftware.chuck:library:${Versions.chuck}"
     const val chuckNoop = "com.readystatesoftware.chuck:library-no-op:${Versions.chuck}"
+    const val leakCanary = "com.squareup.leakcanary:leakcanary-android:${Versions.leakCanary}"
 }
 
 object TestLibraries {
