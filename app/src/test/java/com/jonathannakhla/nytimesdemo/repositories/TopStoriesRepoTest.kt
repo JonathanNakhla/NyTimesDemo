@@ -1,6 +1,6 @@
 package com.jonathannakhla.nytimesdemo.repositories
 
-import com.jonathannakhla.nytimesdemo.api.TopStoriesApi
+import com.jonathannakhla.nytimesdemo.network.TopStoriesApi
 import com.jonathannakhla.nytimesdemo.data.Article
 import com.jonathannakhla.nytimesdemo.data.Results
 import com.jonathannakhla.nytimesdemo.storage.TopStoriesStorage

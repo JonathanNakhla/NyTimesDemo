@@ -4,6 +4,7 @@ object BuildPlugins {
     const val kotlinSerializationPlugin = "org.jetbrains.kotlin:kotlin-serialization:${Versions.kotlin}"
 
     const val androidApplication = "com.android.application"
+    const val androidLibrary = "com.android.library"
     const val kotlinAndroid = "kotlin-android"
     const val kotlinxSerialization = "kotlinx-serialization"
     const val kotlinAndroidExtensions = "kotlin-android-extensions"
@@ -17,7 +18,7 @@ object BuildVersions {
 object Versions {
     const val kotlin = "1.3.60"
     const val serializationRuntime = "0.14.0"
-    const val rxjava = "3.0.0-RC6"
+    const val rxjava = "3.0.2"
     const val rxandroid = "3.0.0-SNAPSHOT"
     const val retrofit = "2.7.1"
     const val retrofitKotlinxSerializationConverter = "0.4.0"
@@ -31,6 +32,7 @@ object Versions {
     const val material = "1.0.0"
     const val koin = "2.0.1"
     const val glide = "4.11.0"
+    const val chuck = "1.1.0"
     const val junit = "5.4.0"
     const val mockk = "1.9.3.kotlin12"
 }
@@ -70,6 +72,8 @@ object DiLibraries {
 
 object ToolsLibraries {
     const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
+    const val chuck = "com.readystatesoftware.chuck:library:${Versions.chuck}"
+    const val chuckNoop = "com.readystatesoftware.chuck:library-no-op:${Versions.chuck}"
 }
 
 object TestLibraries {

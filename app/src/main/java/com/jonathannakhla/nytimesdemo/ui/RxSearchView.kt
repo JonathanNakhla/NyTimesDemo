@@ -7,7 +7,7 @@ import io.reactivex.rxjava3.core.ObservableEmitter
 class RxSearchView {
 
     fun getObservable(searchView: SearchView): Observable<String> {
-        return Observable.create<String> { emitter ->
+        return Observable.create { emitter ->
             createListener(searchView, emitter)
         }
     }

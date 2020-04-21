@@ -1,4 +1,4 @@
-package com.jonathannakhla.nytimesdemo.api
+package com.jonathannakhla.nytimesdemo.network
 
 import com.jonathannakhla.nytimesdemo.data.Results
 import io.reactivex.rxjava3.core.Observable

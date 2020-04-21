@@ -1,6 +1,6 @@
 package com.jonathannakhla.nytimesdemo.repositories
 
-import com.jonathannakhla.nytimesdemo.api.TopStoriesApi
+import com.jonathannakhla.nytimesdemo.network.TopStoriesApi
 import com.jonathannakhla.nytimesdemo.data.Article
 import com.jonathannakhla.nytimesdemo.storage.TopStoriesStorage
 import io.reactivex.rxjava3.core.Observable
@@ -9,7 +9,7 @@ internal class TopStoriesRepoImpl(private val topStoriesApi: TopStoriesApi,
                                   private val topStoriesStorage: TopStoriesStorage) : TopStoriesRepo {
 
     companion object {
-        private const val API_KEY = "OKsEwghCzAPR3kRr7Hp51cFn2tMfXWgj"
+        private const val API_KEY = "nDiuHSEWcAW4nImAeKvYVi0BxpRfBcmX"
     }
 
     override fun getTopStories(invalidate: Boolean): Observable<List<Article>> {
