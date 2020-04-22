@@ -2,8 +2,8 @@ package com.jonathannakhla.analytics
 
 import com.jonathannakhla.analytics.data.TrackingEvent
 import com.jonathannakhla.analytics.data.TrackingEventBatch
-import com.jonathannakhla.analytics.request.SegmentEvent
-import com.jonathannakhla.analytics.request.SegmentRequest
+import com.jonathannakhla.analytics.network.request.SegmentEvent
+import com.jonathannakhla.analytics.network.request.SegmentRequest
 import com.jonathannakhla.analytics.storage.room.TrackingEventEntity
 import kotlinx.serialization.ImplicitReflectionSerializer
 import kotlinx.serialization.json.Json

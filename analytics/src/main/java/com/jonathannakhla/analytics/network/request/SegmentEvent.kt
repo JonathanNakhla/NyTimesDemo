@@ -1,4 +1,4 @@
-package com.jonathannakhla.analytics.request
+package com.jonathannakhla.analytics.network.request
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
