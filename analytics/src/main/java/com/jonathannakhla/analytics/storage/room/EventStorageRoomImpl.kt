@@ -1,7 +1,5 @@
 package com.jonathannakhla.analytics.storage.room
 
-import android.content.Context
-import androidx.room.Room
 import com.jonathannakhla.analytics.data.TrackingEvent
 import com.jonathannakhla.analytics.data.TrackingEventBatch
 import com.jonathannakhla.analytics.storage.EventStorage
@@ -12,19 +10,12 @@ import hu.akarnokd.rxjava3.bridge.RxJavaBridge
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
 
-class EventStorageRoomImpl(context: Context) :
+class EventStorageRoomImpl(private val db: TrackingEventDatabase) :
     EventStorage {
 
     companion object {
-        private const val DATABASE_NAME = "analytics"
         private const val BATCH_COUNT = 15
     }
-
-    private val db = Room.databaseBuilder(
-        context.applicationContext,
-        TrackingEventDatabase::class.java,
-        DATABASE_NAME
-    ).build()
 
     override fun storeEvent(event: TrackingEvent): Completable {
         val eventEntity = event.toTrackingEventEntity()
