@@ -2,6 +2,7 @@ package com.jonathannakhla.analytics.network.api
 
 import android.content.Context
 import com.jonathannakhla.analytics.network.service.TrackingEventService
+import com.jonathannakhla.analytics.storage.user.UserManagerFactory
 import com.jonathannakhla.network.NetworkProvider
 
 class TrackingEventApiFactory(private val context: Context) {
@@ -13,6 +14,9 @@ class TrackingEventApiFactory(private val context: Context) {
     fun create(): TrackingEventApi {
         val networkProvider = NetworkProvider(SEGMENT_BASE_URL, context.applicationContext)
         val service = networkProvider.create(TrackingEventService::class.java)
-        return TrackingEventApiImpl(service)
+
+        val userIdManager = UserManagerFactory(context).create()
+
+        return TrackingEventApiImpl(service, userIdManager)
     }
 }

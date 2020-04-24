@@ -5,7 +5,7 @@ import android.util.Log
 import androidx.work.RxWorker
 import androidx.work.WorkerParameters
 import com.jonathannakhla.analytics.network.api.TrackingEventApiFactory
-import com.jonathannakhla.analytics.storage.EventStorageFactory
+import com.jonathannakhla.analytics.storage.event.EventStorageFactory
 import hu.akarnokd.rxjava3.bridge.RxJavaBridge
 import io.reactivex.Single
 

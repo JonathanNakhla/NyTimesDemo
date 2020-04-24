@@ -1,4 +1,4 @@
-package com.jonathannakhla.analytics.storage
+package com.jonathannakhla.analytics.storage.event
 
 import android.content.Context
 import com.jonathannakhla.analytics.storage.room.EventStorageRoomImpl

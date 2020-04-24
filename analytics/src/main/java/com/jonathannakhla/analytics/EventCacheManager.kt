@@ -2,8 +2,8 @@ package com.jonathannakhla.analytics
 
 import android.util.Log
 import androidx.work.*
-import com.jonathannakhla.analytics.storage.EventStorage
-import com.jonathannakhla.analytics.storage.EventStorageChecker
+import com.jonathannakhla.analytics.storage.event.EventStorage
+import com.jonathannakhla.analytics.storage.event.EventStorageChecker
 import com.jonathannakhla.analytics.data.TrackingEvent
 import com.jonathannakhla.analytics.network.api.TrackingEventApi
 import com.jonathannakhla.analytics.workmanager.OneTimeUploadWorker

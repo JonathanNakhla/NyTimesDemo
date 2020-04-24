@@ -1,4 +1,4 @@
-package com.jonathannakhla.analytics.storage
+package com.jonathannakhla.analytics.storage.event
 
 import com.jonathannakhla.analytics.data.TrackingEvent
 import com.jonathannakhla.analytics.data.TrackingEventBatch
