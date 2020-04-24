@@ -48,16 +48,16 @@ class MainFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         swipe_container.setOnRefreshListener {
-            loadTopStories(false)
+            loadTopStories(showProgressBar = false, shouldGetNewTopStories = true)
         }
 
         recyclerview.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
-        loadTopStories(true)
+        loadTopStories(showProgressBar = true, shouldGetNewTopStories = false)
     }
 
-    private fun loadTopStories(showProgressBar: Boolean) {
-        mainViewModel.getTopStories()
+    private fun loadTopStories(showProgressBar: Boolean, shouldGetNewTopStories: Boolean) {
+        mainViewModel.getTopStories(shouldGetNewTopStories)
             .singleOrError()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
