@@ -29,6 +29,8 @@ android {
 
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+    implementation(project(":analytics"))
+    implementation(project(":network"))
     implementation(Kotlin.stdlib)
     implementation(Kotlin.serializationRuntime)
     implementation(RxLibraries.rxjava)
@@ -45,6 +47,12 @@ dependencies {
     implementation(DiLibraries.koin)
     implementation(DiLibraries.koinViewModel)
     implementation(ToolsLibraries.glide)
+
+    debugImplementation(ToolsLibraries.leakCanary)
+
+    debugImplementation(SqlScoutLibraries.server)
+    releaseImplementation(SqlScoutLibraries.serverNoop)
+
     testImplementation(TestLibraries.junit)
     testImplementation(TestLibraries.mockk)
 }

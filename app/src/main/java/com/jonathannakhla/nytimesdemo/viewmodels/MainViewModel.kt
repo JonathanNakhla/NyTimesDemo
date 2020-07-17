@@ -6,6 +6,10 @@ import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModel
+import com.jonathannakhla.analytics.data.EventNames
+import com.jonathannakhla.analytics.data.PropertyNames
+import com.jonathannakhla.analytics.data.TrackingEvent
+import com.jonathannakhla.analytics.track.Trackers
 import com.jonathannakhla.nytimesdemo.R
 import com.jonathannakhla.nytimesdemo.data.Article
 import com.jonathannakhla.nytimesdemo.fragments.DetailsFragment
@@ -17,7 +21,8 @@ import java.util.concurrent.TimeUnit
 
 
 class MainViewModel(private val topStoriesRepo: TopStoriesRepo,
-                    private val rxSearchView: RxSearchView): ViewModel() {
+                    private val rxSearchView: RxSearchView,
+                    private val trackers: Trackers): ViewModel() {
 
     companion object {
         private const val DEBOUNCE_TIME = 300L
@@ -41,6 +46,8 @@ class MainViewModel(private val topStoriesRepo: TopStoriesRepo,
                                  sharedImage: View,
                                  sharedText: View) {
 
+        trackArticleClicked(article)
+
         val hashCode = article.hashCode()
         val detailsFragment = DetailsFragment.newInstance(hashCode)
 
@@ -59,5 +66,23 @@ class MainViewModel(private val topStoriesRepo: TopStoriesRepo,
             ?.addToBackStack(null)
             ?.commit()
 
+    }
+
+    fun trackArticleView(article: Article) {
+        trackers.track(TrackingEvent(EventNames.ARTICLE_VIEW,
+            mapOf(PropertyNames.ARTICLE_TITLE to article.title,
+                PropertyNames.ARTICLE_DATE to article.date,
+                PropertyNames.ARTICLE_URL to article.url
+            )
+        ))
+    }
+
+    private fun trackArticleClicked(article: Article) {
+        trackers.track(TrackingEvent(EventNames.ARTICLE_CLICK,
+            mapOf(PropertyNames.ARTICLE_TITLE to article.title,
+                PropertyNames.ARTICLE_DATE to article.date,
+                PropertyNames.ARTICLE_URL to article.url
+            )
+        ))
     }
 }

@@ -1,5 +1,6 @@
 package com.jonathannakhla.nytimesdemo.di
 
+import com.jonathannakhla.analytics.track.TrackFactory
 import com.jonathannakhla.nytimesdemo.repositories.TopStoriesRepoFactory
 import com.jonathannakhla.nytimesdemo.ui.RxSearchView
 import com.jonathannakhla.nytimesdemo.viewmodels.DetailsViewModel
@@ -13,7 +14,11 @@ val nyTimesDemoModule = module {
     factory { RxSearchView() }
 }
 
+val analyticsModule = module {
+    factory { TrackFactory(androidApplication()).create() }
+}
+
 val vmModule = module {
-    viewModel { MainViewModel(get(), get()) }
+    viewModel { MainViewModel(get(), get(), get()) }
     viewModel { DetailsViewModel(get()) }
 }
